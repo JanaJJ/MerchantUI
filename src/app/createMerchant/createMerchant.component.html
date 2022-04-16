@@ -1,0 +1,89 @@
+<h1 mat-dialog-title >Create Merchant</h1>
+<div mat-dialog-content>
+  <form class="example-form" [formGroup]="merchantForm">
+    <table class="example-full-width" cellspacing="5">
+      <tr>
+        <mat-form-field class="example-full-width-row" appearance="legacy">
+          <mat-label>Merchant Code</mat-label>
+          <input formControlName="merchantCode" matInput>
+        </mat-form-field>
+        <small *ngIf="merchantCode.invalid && merchantCode.touched" class="text-danger">Merchant Code is Required</small>
+      </tr>
+    </table>
+    <table class="example-full-width" cellspacing="5">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>Name</mat-label>
+            <input formControlName="name" matInput>
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>Full Name</mat-label>
+            <input formControlName="fullName" matInput>
+          </mat-form-field>
+          <small *ngIf="fullName.invalid && fullName.touched" class="text-danger">Full Name is Required</small>
+        </td>
+      </tr>
+    </table>
+
+    <table class="example-full-width" cellspacing="5">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="legacy" hintLabel="Please follow the example for correct input!">
+            <mat-label>Email</mat-label>
+            <input formControlName="email" matInput placeholder="Ex.email@email.com">
+          </mat-form-field>
+          <small *ngIf="email.invalid && email.touched" class="text-danger">Email is Required</small>
+        </td>
+        <td>
+          <mat-form-field class="example-full-width" hintLabel="Max 9 characters" appearance="legacy">
+            <mat-label>Phone Number</mat-label>
+            <input formControlName="phoneNumber" matInput #input maxlength="9" placeholder="Ex.123456789">
+            <mat-hint align="end">{{input.value?.length || 0}}/9</mat-hint>
+          </mat-form-field>
+        </td>
+      </tr>
+    </table>
+
+    <table class="example-full-width" cellspacing="5">
+      <tr>
+        <mat-form-field class="example-full-width-row" appearance="legacy" hintLabel="Min length is 5 characters">
+          <mat-label>Address</mat-label>
+          <input formControlName="address" matInput>
+        </mat-form-field>
+      </tr>
+    </table>
+
+    <table class="example-full-width" cellspacing="5">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>Website</mat-label>
+            <input formControlName="website" matInput placeholder="Ex. www.mysite.com">
+          </mat-form-field>
+        </td>
+        <td>
+          <mat-form-field hintLabel="Max 4 characters" appearance="legacy">
+            <mat-label>Account Number</mat-label>
+            <input  formControlName="accountNum" matInput #input maxlength="4" >
+            <mat-hint align="end">{{input.value?.length || 0}}/4</mat-hint>
+          </mat-form-field>
+          <small *ngIf="accountNum.invalid && accountNum.touched" class="text-danger"> Account Number is Required</small>
+        
+        </td>
+      </tr>
+      
+    </table>
+    <mat-card-actions align="end">
+      <button mat-button color="primary" mat-dialog-close>Close</button>
+      <button mat-flat-button color="primary" [disabled]="merchantForm.invalid" (click)="createMerchant()">Create</button>
+      
+    </mat-card-actions>
+  </form>
+</div>
+
+
+
+

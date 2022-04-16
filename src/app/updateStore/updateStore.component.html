@@ -1,0 +1,62 @@
+<mat-toolbar color="primary" class="header" style="margin-bottom: 70px;">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span >Update Store </span>
+</mat-toolbar>
+<mat-card class="wrapper">
+  <mat-card-content>
+    <form class="example-form">
+      <table class="example-full-width" cellspacing="10">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Merchant Code</mat-label>
+              <input matInput [formControl]="merchantCodeFormControl">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Store Code</mat-label>
+              <input matInput [formControl]="storeCodeFormControl">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <mat-form-field class="example-full-width-row" appearance="outline" style="margin-left: 12px;">
+        <mat-label>Store Name</mat-label>
+        <input matInput [formControl]="storeNameFormControl">
+      </mat-form-field>
+
+      <table class="example-full-width" cellspacing="10">
+        <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Email</mat-label>
+              <input matInput [formControl]="emailFormControl">
+            </mat-form-field>
+          </td>
+          <td>
+            <mat-form-field class="example-full-width" appearance="outline">
+              <mat-label>Phone Number</mat-label>
+              <input matInput [formControl]="phoneNumberFormControl">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+
+      <mat-form-field class="example-full-width-row" appearance="outline" style="margin-left: 12px;">
+        <mat-label>Address</mat-label>
+        <input matInput [formControl]="addressFormControl">
+      </mat-form-field>
+
+    </form>
+    
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button color="primary" (click)="onBack()">Back</button>
+    <button mat-flat-button color="primary" (click)="updateStore()">Update Store</button>
+  </mat-card-actions>
+</mat-card>

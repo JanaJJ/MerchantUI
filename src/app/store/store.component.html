@@ -1,0 +1,110 @@
+
+<mat-toolbar color="primary" class="header">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Merchants Overview</span>
+</mat-toolbar>
+
+<mat-accordion class="wrapper">
+  <mat-expansion-panel hideToggle >
+    <mat-expansion-panel-header class="example-flex-container">
+      <mat-panel-title style="color: white;" >
+        <mat-icon style="margin-right: 10px;">business</mat-icon>{{merchantInfo}}
+      </mat-panel-title>
+      <mat-panel-description  style="color: white;">
+        Merchant Overview
+        <mat-icon>expand_more</mat-icon>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <h3 class="accordion-item"><mat-icon color="primary" class="icon">person_search</mat-icon>  Name: {{nameInfo}}</h3>
+    <h3 class="accordion-item"><mat-icon color="primary"class="icon"> badge</mat-icon>  Full Name: {{fullNameInfo}}</h3>
+    <h3 class="accordion-item"><mat-icon color="primary"class="icon">home</mat-icon>  Address: {{addressInfo}}</h3>
+    <h3 class="accordion-item"><mat-icon color="primary"class="icon">call</mat-icon>  Phone Number: {{numberInfo}}</h3>
+    <h3 class="accordion-item"><mat-icon color="primary"class="icon">email</mat-icon>  Email: {{emailInfo}}</h3>
+    <h3 class="accordion-item"><mat-icon color="primary"class="icon">travel_explore</mat-icon>  Website: {{websiteInfo}}</h3>
+    <h3 class="accordion-item"><mat-icon color="primary"class="icon">vpn_key</mat-icon>  Account Number: {{accountNumInfo}}</h3>
+  </mat-expansion-panel>
+  <mat-expansion-panel (opened)="panelOpenState = true"
+                       (closed)="panelOpenState = false">
+  </mat-expansion-panel>
+</mat-accordion>
+
+<mat-card class="mat-card-wrapper">
+  <mat-toolbar class="toolbar-stores">
+    <span>{{merchantInfo}}'s Stores</span>
+    <span class="example-spacer"></span>
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>store</mat-icon>
+    </button>
+  </mat-toolbar>
+  <mat-card-content>
+    <button mat-icon-button color="primary">
+      <mat-icon>filter_list</mat-icon>
+    </button>
+    <mat-form-field appearance="standard">
+      <mat-label>Filter</mat-label>
+      <input matInput (keyup)="applyFilter($event)"  #input>
+    </mat-form-field>
+
+
+    <table mat-table [dataSource]="dataSource" matSort class="merchants-table mat-elevation-z0">
+
+      <!-- Name Column -->
+      <ng-container matColumnDef="storeCode">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Store Code </th>
+        <td mat-cell *matCellDef="let element" class="element"> {{element.storeCode}} </td>
+      </ng-container>
+      <!-- Merchant Code Column -->
+      <ng-container matColumnDef="merchantCode">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Merchant Code </th>
+        <td mat-cell *matCellDef="let element"class="element"> {{element.merchantCode}} </td>
+      </ng-container>
+
+      <!--Full Name Column -->
+      <ng-container matColumnDef="storeName">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header> Store Name </th>
+        <td mat-cell *matCellDef="let element"class="element"> {{element.storeName}} </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="details">
+        <th mat-header-cell *matHeaderCellDef> Details </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" (click)="openStoreOverview(element.merchantCode,element.storeCode,element.storeName,element.address,element.email,element.phoneNumber)">
+            <mat-icon>info</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="actions">
+        <th mat-header-cell *matHeaderCellDef> Actions </th>
+        <td mat-cell *matCellDef="let element">
+          <button mat-icon-button color="primary" (click)="navigateToActions(element.merchantCode,element.storeCode)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button style="color: orange;" (click)="openDialogToDelete(element.storeCode)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      <!-- Row shown when there is no matching data. -->
+      <tr class="mat-row" *matNoDataRow>
+        <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
+      </tr>
+    </table>
+    <mat-paginator color="primary" [pageSizeOptions]="[5, 10, 25]" aria-label="Select page of users"></mat-paginator>
+    
+    <div class="example-button-row">
+      <button mat-flat-button style="color: #673ab7;" (click)="onBack()"><mat-icon>arrow_back_ios</mat-icon></button>
+      <button mat-fab style="background-color:orange;color: white;" (click)="openDialogClick()">
+        <mat-icon>add_circle</mat-icon>
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>

@@ -1,0 +1,28 @@
+<div class="example-button-row">
+  <mat-card-title class="title">
+    <mat-icon color="primary" style="margin-right: 20px;">store</mat-icon>
+    <h1 class="title-item">Store Overview</h1>
+  </mat-card-title>
+  <mat-card-actions>
+    <button mat-icon-button  class="button" mat-dialog-close>
+      <mat-icon color="primary">close</mat-icon>
+    </button>
+  </mat-card-actions>
+</div>
+<mat-card-content>
+  <h3 class="item">
+    <mat-icon color="primary" class="icon"> badge</mat-icon> Store Code: {{data.storeCode}}
+  </h3>
+  <h3 class="item">
+    <mat-icon color="primary" class="icon"> person_search</mat-icon> Name: {{data.storeName}}
+  </h3>
+  <h3 class="item">
+    <mat-icon color="primary" class="icon">home</mat-icon> Address: {{data.address}}
+  </h3>
+  <h3 class="item">
+    <mat-icon color="primary" class="icon">call</mat-icon> Phone Number: {{data.phoneNumber}}
+  </h3>
+  <h3 class="item">
+    <mat-icon color="primary" class="icon">email</mat-icon> Email: {{data.email}}
+  </h3>
+</mat-card-content>
