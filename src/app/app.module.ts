@@ -25,6 +25,7 @@ import { UpdateStoreComponent } from './updateStore/updateStore.component';
 import { StoreDetailsComponent } from './storeDetails/storeDetails.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
 
 
 
@@ -40,6 +41,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     CreateStoreComponent,
     UpdateStoreComponent,
     StoreDetailsComponent,
+    DeleteDialogComponent
 
   ],
   imports: [
