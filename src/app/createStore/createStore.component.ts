@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MerchantService } from '../merchant.service';
-import { MatDialogRef } from '@angular/material/dialog';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -12,53 +12,38 @@ import { ActivatedRoute } from '@angular/router';
 export class CreateStoreComponent implements OnInit {
   storeForm !: FormGroup;
   public merchant: any;
+  public store: any;
   constructor(
-    private formBuilder: FormBuilder,
     private merchantService: MerchantService,
     private route: ActivatedRoute,
-    private dialogRef: MatDialogRef<CreateStoreComponent>
+    private dialogRef: MatDialogRef<CreateStoreComponent>,
+    @Inject(MAT_DIALOG_DATA) public data:{merchantCode:string}
   ) { }
 
   ngOnInit() {
-    // this.storeForm = this.formBuilder.group({
-    //   storeCode: ['', Validators.required],
-    //   //merchantCode: [{value: this.merchant.merchantCode, disabled: true}, Validators.required],
-    //   merchantCode: [ '', Validators.required],
-    //   storeName: ['', Validators.required],
-    //   email: ['', Validators.required],
-    //   phoneNumber: ['', Validators.maxLength(9)],
-    //   address: ['', Validators.maxLength],
-
-    // });
     this.storeForm = new FormGroup({
-      'merchantCode' : new FormControl(null, Validators.required),
-      'storeCode' : new FormControl(null, Validators.required),
-      'storeName' : new FormControl(null, Validators.required),
-      'email' : new FormControl(null, [Validators.required, Validators.email]),
-      'phoneNumber' : new FormControl(null, Validators.maxLength(9)),
-      'address' : new FormControl(null, [Validators.maxLength(20), Validators.minLength(5)]),
+      'merchantCode': new FormControl(this.data.merchantCode, Validators.required),
+      'storeCode': new FormControl(null, Validators.required),
+      'storeName': new FormControl(null, Validators.required),
+      'email': new FormControl(null, [Validators.required, Validators.email]),
+      'phoneNumber': new FormControl(null, Validators.maxLength(9)),
+      'address': new FormControl(null, [Validators.maxLength(20), Validators.minLength(5)]),
     });
-    
+
+
   }
-  
   get merchantCode() {
     return this.storeForm.get('merchantCode');
   }
-  
   get storeCode() {
     return this.storeForm.get('storeCode');
   }
-  
   get storeName() {
     return this.storeForm.get('storeName');
   }
-
- 
   get email() {
     return this.storeForm.get('email');
   }
-
-
   createStore() {
 
     if (this.storeForm.valid) {

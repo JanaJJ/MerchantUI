@@ -18,7 +18,6 @@ export class StoreComponent implements OnInit {
   public displayedColumns: string[] = ['storeCode', 'merchantCode', 'storeName', 'details', 'actions'];
   public store: any;
   public merchant: any;
-  public find:any;
   panelOpenState = false;
   merchantInfo: any;
   nameInfo: any;
@@ -53,7 +52,7 @@ export class StoreComponent implements OnInit {
           this.info();
         })
       });
-      
+
   }
   public info() {
     this.merchantInfo = this.merchant.merchantCode;
@@ -65,22 +64,19 @@ export class StoreComponent implements OnInit {
     this.websiteInfo = this.merchant.website;
     this.accountNumInfo = this.merchant.accountNum;
   }
-  // public stores(merchantCode: string) {
-  //   this.merchantService.GetStoresByMerchantId(merchantCode).subscribe((results: any) => {
-  //     console.log("stores", results);
-  //     this.dataSource.data = results.merchants;
-  //   });
-  // }
+
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
-  onBack(){
+  onBack() {
     this.location.back();
   }
   openDialogClick() {
+    const merchantCode=this.merchant.merchantCode;
     this.matDialog.open(CreateStoreComponent, {
       width: '500px',
+      data:{merchantCode:merchantCode}
     }).afterClosed().subscribe(val => {
       if (val == 'save') {
         this.route.params.subscribe((params: any) => {
@@ -94,64 +90,47 @@ export class StoreComponent implements OnInit {
       }
     })
   }
-
-
-
-  openStoreOverview(merchantCode:string,storeCode:string,storeName:string,address:string,email:string,phoneNumber:string)
-  {
-    this.dialog.open(StoreDetailsComponent,{
-      width:'600px',height:'430px',
-      data:{
-        merchantCode:merchantCode,
-        storeCode:storeCode,
-        storeName:storeName,
-        address:address,
-        email:email,
-        phoneNumber:phoneNumber
+  openStoreOverview(merchantCode: string, storeCode: string, storeName: string, address: string, email: string, phoneNumber: string) {
+    this.dialog.open(StoreDetailsComponent, {
+      width: '600px', height: '430px',
+      data: {
+        merchantCode: merchantCode,
+        storeCode: storeCode,
+        storeName: storeName,
+        address: address,
+        email: email,
+        phoneNumber: phoneNumber
       }
     })
   }
 
-
-
-  public navigateToActions(merchantCode: string, storeCode: string) {
-    this.router.navigate(['merchants/' + merchantCode + '/stores/' + storeCode]);
-  }
-
-  public deleteStore(storeCode: string) {
-    this.merchantService.DeleteStore(storeCode).subscribe(() => {
-      this.route.params.subscribe((params: any) => {
-        const merchantCode = params.merchantCode;
-        this.merchantService.GetStoresByMerchantId(merchantCode).subscribe((store: any) => {
-          console.log("ova e Store", store);
-          this.store = store;
-          this.dataSource.data = store;
-        })
-      });
-    })
-  }
-
-  openDialogToDelete(storeCode:string) {
+  openDialogToDelete(storeCode: string) {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '350px',
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      if(result)
-      {
+      if (result) {
         console.log('The dialog was closed');
         this.merchantService.DeleteStore(storeCode).subscribe(() => {
-          const indexOfObjects=this.dataSource.data.findIndex((object:any)=>{
-            return object.storeCode==storeCode;
+          const indexOfObjects = this.dataSource.data.findIndex((object: any) => {
+            return object.storeCode == storeCode;
           });
           console.log(indexOfObjects);
-          this.dataSource.data.splice(indexOfObjects,1);
+          this.dataSource.data.splice(indexOfObjects, 1);
           console.log(this.dataSource.data);
           this.ngOnInit();
         });
 
-      } 
+      }
     });
   }
+
+  public navigateToActions(merchantCode: string, storeCode: string) {
+    this.router.navigate(['merchants/' + merchantCode + '/stores/' + storeCode]);
+  }
+
+
+
 
 }

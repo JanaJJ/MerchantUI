@@ -8,19 +8,19 @@ import { UpdateStoreComponent } from './updateStore/updateStore.component';
 
 const routes: Routes = [
   {
-    path:'merchants',component:MerchantsComponent
+    path: 'merchants', component: MerchantsComponent
   },
   {
-    path:'merchants/:merchantCode',component:MerchantComponent
+    path: 'merchants/:merchantCode', component: MerchantComponent
   },
   {
-    path:'merchants/:merchantCode/stores',component:StoreComponent
+    path: 'merchants/:merchantCode/stores', component: StoreComponent
   },
   {
-    path:'merchants/:merchantCode/stores/:storeCode',component:UpdateStoreComponent
+    path: 'merchants/:merchantCode/stores/:storeCode', component: UpdateStoreComponent
   },
   {
-    path:'merchants/:merchantCode/stores/:storeCode',component:StoreDetailsComponent
+    path: 'merchants/:merchantCode/stores/:storeCode', component: StoreDetailsComponent
   }
 
 ];

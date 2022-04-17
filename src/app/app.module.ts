@@ -5,41 +5,43 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MerchantsComponent } from './merchants/merchants.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatCardModule} from '@angular/material/card';
+import { MatCardModule } from '@angular/material/card';
 import { HttpClientModule } from '@angular/common/http';
-import {MatTableModule} from '@angular/material/table';
+import { MatTableModule } from '@angular/material/table';
 import { MerchantComponent } from './merchant/merchant.component';
-import {MatButtonModule} from '@angular/material/button';
-import {MatIconModule} from '@angular/material/icon';
-import {MatInputModule} from '@angular/material/input';
-import {MatFormFieldModule} from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatDialogModule} from '@angular/material/dialog';
+import { MatDialogModule } from '@angular/material/dialog';
 import { CreateMerchantComponent } from './createMerchant/createMerchant.component';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import {MatPaginatorModule} from '@angular/material/paginator';
-import {MatSortModule} from '@angular/material/sort';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatSortModule } from '@angular/material/sort';
 import { StoreComponent } from './store/store.component';
 import { CreateStoreComponent } from './createStore/createStore.component';
 import { UpdateStoreComponent } from './updateStore/updateStore.component';
 import { StoreDetailsComponent } from './storeDetails/storeDetails.component';
-import {MatExpansionModule} from '@angular/material/expansion';
-import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
+import { MatExpansionModule } from '@angular/material/expansion';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+
 
 
 
 @NgModule({
-  declarations: [						
+  declarations: [
     AppComponent,
     MerchantsComponent,
-      MerchantComponent,
-      CreateMerchantComponent,
-      StoreComponent,
-      CreateStoreComponent,
-      UpdateStoreComponent,
-      StoreDetailsComponent,
-      DeleteDialogComponent
-   ],
+    MerchantComponent,
+    CreateMerchantComponent,
+    StoreComponent,
+    CreateStoreComponent,
+    UpdateStoreComponent,
+    StoreDetailsComponent,
+
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -57,8 +59,9 @@ import { DeleteDialogComponent } from './delete-dialog/delete-dialog.component';
     MatToolbarModule,
     MatPaginatorModule,
     MatSortModule,
-    MatExpansionModule
-  
+    MatExpansionModule,
+    FlexLayoutModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

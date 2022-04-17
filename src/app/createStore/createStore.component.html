@@ -1,7 +1,7 @@
 <h1 mat-dialog-title>Create Store</h1>
 <div mat-dialog-content>
   <form class="example-form" [formGroup]="storeForm">
-    
+
     <table class="example-full-width" cellspacing="5">
       <tr>
         <mat-form-field class="example-full-width-row" appearance="legacy">
@@ -14,11 +14,12 @@
     <table class="example-full-width" cellspacing="5">
       <tr>
         <td>
-          <mat-form-field class="example-full-width" appearance="legacy" >
-            <mat-label >Merchant Code</mat-label>
+          <mat-form-field class="example-full-width" appearance="legacy">
+            <mat-label>Merchant Code</mat-label>
             <input formControlName="merchantCode" matInput >
           </mat-form-field>
-          <small *ngIf="merchantCode.invalid && merchantCode.touched" class="text-danger">Merchant Code is Required</small>
+          <small *ngIf="merchantCode.invalid && merchantCode.touched" class="text-danger">Merchant Code is
+            Required</small>
         </td>
         <td>
           <mat-form-field class="example-full-width" appearance="legacy">
@@ -33,15 +34,17 @@
     <table class="example-full-width" cellspacing="5">
       <tr>
         <td>
-          <mat-form-field class="example-full-width" appearance="legacy" hintLabel="Please follow the example for correct input!">
+          <mat-form-field class="example-full-width" appearance="legacy"
+            hintLabel="Please follow the example for correct input!">
             <mat-label>Email</mat-label>
             <input formControlName="email" matInput placeholder="Ex.email@email.com">
           </mat-form-field>
-          <small *ngIf="email.invalid && email.touched" class="text-danger" style="margin-bottom: 10px;">Email is Required</small>
+          <small *ngIf="email.invalid && email.touched" class="text-danger" style="margin-bottom: 10px;">Email is
+            Required</small>
         </td>
-        
+
         <td>
-          <mat-form-field class="example-full-width" appearance="legacy"  hintLabel="Max 9 characters">
+          <mat-form-field class="example-full-width" appearance="legacy" hintLabel="Max 9 characters">
             <mat-label>Phone Number</mat-label>
             <input formControlName="phoneNumber" matInput #input maxlength="9">
             <mat-hint align="end">{{input.value?.length || 0}}/9</mat-hint>

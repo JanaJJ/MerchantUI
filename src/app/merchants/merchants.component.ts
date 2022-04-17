@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { MerchantService } from '../merchant.service';
@@ -18,6 +18,7 @@ export class MerchantsComponent implements OnInit {
   public displayedColumns: string[] = ['merchantCode', 'name', 'fullName', 'details', 'actions'];
   @ViewChild(MatPaginator) paginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
+ 
   constructor(
     public merchantService: MerchantService,
     private router: Router,
@@ -57,15 +58,6 @@ export class MerchantsComponent implements OnInit {
     })
   }
 
-
-  public navigateToActions(merchantCode: string) {
-    this.router.navigate(['merchants/' + merchantCode]);
-  }
-  public navigateToDetails(merchantCode: string) {
-    this.router.navigate(['merchants/' + merchantCode + '/stores']);
-  }
-  
-
   openDialogToDelete(merchantCode:string) {
     const dialogRef = this.dialog.open(DeleteDialogComponent, {
       width: '350px',
@@ -88,6 +80,17 @@ export class MerchantsComponent implements OnInit {
       } 
     });
   }
+
+
+  public navigateToActions(merchantCode: string) {
+    this.router.navigate(['merchants/' + merchantCode]);
+  }
+  public navigateToDetails(merchantCode: string) {
+    this.router.navigate(['merchants/' + merchantCode + '/stores']);
+  }
+  
+
+  
 
 
 }

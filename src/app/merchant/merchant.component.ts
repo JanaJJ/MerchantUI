@@ -29,7 +29,6 @@ export class MerchantComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    //za route se koristi params,za quer se koristi queryparams
     this.route.params.subscribe((params:any)=>{
       const merchantCode=params.merchantCode;
       this.merchantService.getMerchantbyId(merchantCode).subscribe((merchant)=>{
