@@ -67,10 +67,10 @@
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field hintLabel="Max 5 characters" appearance="legacy">
+          <mat-form-field hintLabel="Max 10 characters" appearance="legacy">
             <mat-label>Account Number</mat-label>
-            <input formControlName="accountNum" matInput #input2 maxlength="5">
-            <mat-hint align="end">{{input2.value?.length || 0}}/5</mat-hint>
+            <input formControlName="accountNum" matInput #input2 maxlength="10">
+            <mat-hint align="end">{{input2.value?.length || 0}}/10</mat-hint>
           </mat-form-field>
           <small *ngIf="accountNum.invalid && accountNum.touched" class="text-danger"> Account Number is
             Required</small>
