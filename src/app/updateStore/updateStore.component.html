@@ -40,7 +40,8 @@
           <td>
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Phone Number</mat-label>
-              <input matInput [formControl]="phoneNumberFormControl">
+              <input matInput [formControl]="phoneNumberFormControl" #input maxlength="9">
+              <mat-hint align="end">{{input.value?.length || 0}}/9</mat-hint>
             </mat-form-field>
           </td>
         </tr>

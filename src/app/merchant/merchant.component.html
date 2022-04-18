@@ -35,13 +35,14 @@
           <td>
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Email</mat-label>
-              <input matInput [formControl]="emailFormControl">
+              <input matInput [formControl]="emailFormControl" type="email">
             </mat-form-field>
           </td>
           <td>
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Phone Number</mat-label>
-              <input matInput [formControl]="phoneNumberFormControl">
+              <input matInput [formControl]="phoneNumberFormControl" #input1 maxlength="9">
+              <mat-hint align="end">{{input1.value?.length || 0}}/9</mat-hint>
             </mat-form-field>
           </td>
         </tr>
@@ -65,8 +66,10 @@
           <td>
             <mat-form-field class="example-full-width" appearance="outline">
               <mat-label>Account Number</mat-label>
-              <input matInput [formControl]="accountNumFormControl">
+              <input matInput [formControl]="accountNumFormControl" #input2 maxlength="5">
+              <mat-hint align="end">{{input2.value?.length || 0}}/5</mat-hint>
             </mat-form-field>
+           
           </td>
         </tr>
       </table>
