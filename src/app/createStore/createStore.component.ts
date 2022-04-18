@@ -26,7 +26,7 @@ export class CreateStoreComponent implements OnInit {
       'storeCode': new FormControl(null, Validators.required),
       'storeName': new FormControl(null, Validators.required),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'phoneNumber': new FormControl(null, Validators.maxLength(9)),
+      'phoneNumber': new FormControl(null, [Validators.nullValidator,Validators.pattern('[- +()0-9]+')]),
       'address': new FormControl(null, [Validators.maxLength(50), Validators.minLength(5)]),
     });
 

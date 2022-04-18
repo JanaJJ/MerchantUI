@@ -40,10 +40,9 @@
           <small *ngIf="email.invalid && email.touched" class="text-danger">Email is Required</small>
         </td>
         <td>
-          <mat-form-field class="example-full-width" hintLabel="Max 9 characters" appearance="legacy">
+          <mat-form-field class="example-full-width"  appearance="legacy">
             <mat-label>Phone Number</mat-label>
-            <input formControlName="phoneNumber" matInput #input1 maxlength="9" placeholder="Ex.123456789">
-            <mat-hint align="end">{{input1.value?.length || 0}}/9</mat-hint>
+            <input formControlName="phoneNumber" matInput  placeholder="Ex.123456789">
           </mat-form-field>
         </td>
       </tr>

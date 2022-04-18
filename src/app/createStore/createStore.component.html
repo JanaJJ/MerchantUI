@@ -44,10 +44,9 @@
         </td>
 
         <td>
-          <mat-form-field class="example-full-width" appearance="legacy" hintLabel="Max 9 characters">
+          <mat-form-field class="example-full-width" appearance="legacy">
             <mat-label>Phone Number</mat-label>
-            <input formControlName="phoneNumber" matInput #input maxlength="9">
-            <mat-hint align="end">{{input.value?.length || 0}}/9</mat-hint>
+            <input formControlName="phoneNumber" matInput >
           </mat-form-field>
         </td>
       </tr>
