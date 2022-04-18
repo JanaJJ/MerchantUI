@@ -24,10 +24,10 @@ export class CreateMerchantComponent implements OnInit {
       'name': new FormControl(null, Validators.maxLength(10)),
       'fullName': new FormControl(null, Validators.required),
       'email': new FormControl(null, [Validators.required, Validators.email]),
-      'phoneNumber': new FormControl(null, Validators.maxLength(9)),
+      'phoneNumber': new FormControl(null, Validators.nullValidator),
       'address': new FormControl(null, [Validators.maxLength(20), Validators.minLength(5)]),
       'website': new FormControl(null, Validators.maxLength(30)),
-      'accountNum': new FormControl(null, [Validators.required,Validators.maxLength(4)]),
+      'accountNum': new FormControl(null, [Validators.required,Validators.nullValidator]),
 
     });
   }

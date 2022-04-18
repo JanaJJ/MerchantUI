@@ -42,8 +42,8 @@
         <td>
           <mat-form-field class="example-full-width" hintLabel="Max 9 characters" appearance="legacy">
             <mat-label>Phone Number</mat-label>
-            <input formControlName="phoneNumber" matInput #input maxlength="9" placeholder="Ex.123456789">
-            <mat-hint align="end">{{input.value?.length || 0}}/9</mat-hint>
+            <input formControlName="phoneNumber" matInput #input1 maxlength="9" placeholder="Ex.123456789">
+            <mat-hint align="end">{{input1.value?.length || 0}}/9</mat-hint>
           </mat-form-field>
         </td>
       </tr>
@@ -67,10 +67,10 @@
           </mat-form-field>
         </td>
         <td>
-          <mat-form-field hintLabel="Max 4 characters" appearance="legacy">
+          <mat-form-field hintLabel="Max 5 characters" appearance="legacy">
             <mat-label>Account Number</mat-label>
-            <input formControlName="accountNum" matInput #input maxlength="4">
-            <mat-hint align="end">{{input.value?.length || 0}}/4</mat-hint>
+            <input formControlName="accountNum" matInput #input2 maxlength="5">
+            <mat-hint align="end">{{input2.value?.length || 0}}/5</mat-hint>
           </mat-form-field>
           <small *ngIf="accountNum.invalid && accountNum.touched" class="text-danger"> Account Number is
             Required</small>
